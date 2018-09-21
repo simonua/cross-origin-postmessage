@@ -1,0 +1,17 @@
+{
+  "name": "cross-origin-postmessage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start-host": "http-server ./host -p 40000",
+    "start-iframe": "http-server ./iframe -p 40001",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}
