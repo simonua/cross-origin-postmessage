@@ -1,4 +1,4 @@
-#Cross-Origin PostMessage
+# Cross-Origin PostMessage
 
 This is an example of cross-origin postmessaging with double whitelist for sender and receiver. 
 Ordinarily, this would use https but I did not want to make this more difficult by adding certs, etc. 
