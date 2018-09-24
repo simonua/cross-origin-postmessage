@@ -1,7 +1,7 @@
 # Cross-Origin PostMessage
 
 This is an example of cross-origin postmessaging with a double whitelist to protect both sender and receiver of the message. Both side only explicitly 
-accepts messages from a known sender.  
+accepts messages from a known sender. The example details obtaining a cookie from another domain.
 
 This example can be entirely run on different localhost ports as well. Using different DNS entries in the hosts file here just illustrates the concept across domains 
 a bit more clearly.

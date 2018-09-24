@@ -1,6 +1,5 @@
 (function() {
-    var postMessageOrigin = 'http://postmessage-host.com:40000',
-        postMessageTarget = 'http://postmessage-host.com:40000';
+    var postMessageOrigin = 'http://postmessage-host.com:40000';
 
     var cookieName = 'iframeCookie';
 
@@ -13,31 +12,28 @@
     }
 
     function receiveMessage (evt) {
-        console.log('iframe received message. Evaluating origin.', evt);
+        //Two steps of verification: the source of the message and the request
+        console.log('iframe: Received message. Evaluating origin.', evt);
 
         if (evt.origin !== postMessageOrigin) {
-            console.warn('Invalid origin! Not processing message from ' + postMessageOrigin + '!');
+            console.warn('iframe: Invalid origin! Not processing message from ' + postMessageOrigin + '!');
             return;
         } else {
-            console.log('Verified message origin.');
+            console.log('iframe: Valid origin. Proceeding with message digest.');
 
             if (evt.data === 'sendCookie') {
-                console.log('Sending cookie.');
+                console.log('iframe: Sending cookie.');
 
-                postMessage({cookie: getCookie()});
+                //Reploy to source/origin: https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#Example
+                evt.source.postMessage({cookie: getCookie()}, evt.origin);
             }
         }
-    }
-
-    function postMessage (data) {
-        //Only sending to parent of the iframe.
-        window.parent.postMessage(data, postMessageTarget);
     }
 
     $(function() {
         setCookie();
 
-        //Set up postmessage.
+        //Set up the (post)message listener.
         window.addEventListener('message', receiveMessage, false);
     })
 })();

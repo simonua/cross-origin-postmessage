@@ -1,21 +1,19 @@
 (function() {
-    var postMessageOrigin = 'http://postmessage-iframe.com:40001',
-        postMessageTarget = 'http://postmessage-iframe.com:40001';
+    var postMessageOrigin = postMessageTarget = 'http://postmessage-iframe.com:40001';
 
     function postMessage(data) {
         $('#cookie-iframe')[0].contentWindow.postMessage(data, postMessageTarget);
     }
 
     function receiveMessage (evt) {
-        console.log('Host received message. Evaluating origin.', evt);
+        console.log('host: Received message. Evaluating origin.', evt);
 
         //Verify that we allow receiving of messages from the origin.
         if (evt.origin !== postMessageOrigin) {
-            console.warn('Invalid origin! Not processing message!');
+            console.warn('host: Invalid origin! Not processing message!');
             return;
         } else {
-            console.log('Valid origin. Proceeding with message digest.', evt);
-            console.log('Message data received:', evt.data);
+            console.log('host: Valid origin. Proceeding with message digest.');
             $('div#log').append('<p>Cookie value: ' + evt.data.cookie + '</p>');
         }
     }
