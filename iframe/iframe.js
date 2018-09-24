@@ -1,6 +1,5 @@
 (function() {
     var postMessageOrigin = 'http://postmessage-host.com:40000',
-        postMessageSender = 'http://postmessage-iframe.com:40001',
         postMessageTarget = 'http://postmessage-host.com:40000';
 
     var cookieName = 'manualCookie';

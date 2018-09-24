@@ -1,6 +1,5 @@
 (function() {
     var postMessageOrigin = 'http://postmessage-iframe.com:40001',
-        postMessageSender = 'http://postmessage-host.com:40000',
         postMessageTarget = 'http://postmessage-iframe.com:40001';
 
     function postMessage(data) {
