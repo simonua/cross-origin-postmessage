@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-host": "http-server ./host -p 40000",
-    "start-iframe": "http-server ./iframe -p 40001",
+    "start-host": "http-server ./host -a postmessage-host.com -p 40000 -o",
+    "start-iframe": "http-server ./iframe -a postmessage-iframe.com -p 40001",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
