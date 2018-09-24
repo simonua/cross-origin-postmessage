@@ -2,7 +2,16 @@
 
 This is an example of cross-origin postmessaging with a double whitelist to protect both sender and receiver of the message. Both side only explicitly 
 accepts messages from a known sender.  
+
+This example can be entirely run on different localhost ports as well. Using different DNS entries in the hosts file here just illustrates the concept across domains 
+a bit more clearly.
+
 Ordinarily, this would use https but I did not want to make this more difficult by adding certs, etc. 
+
+## Browser Support
+1. Chrome - Works
+1. Firefox - Works
+1. Internet Explorer - Works if the iframe is referenced on localhost, not postmessage-iframe.com.
 
 ## Setup
 1. Add these hosts file entries. In Windows, they go into c:\windows\sytem32\drivers\etc\hosts, for example:
