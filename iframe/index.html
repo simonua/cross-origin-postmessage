@@ -7,51 +7,7 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.js" integrity="sha256-ZTMFCvouhTVozUsLgEjtZOlJY+OAiLImV1p8yoBU9OI=" crossorigin="anonymous"></script>
-
-        <script type="text/javascript">
-            var postMessageOrigin = 'http://postmessage-host.com:40000',
-                postMessageSender = 'http://postmessage-iframe.com:40001',
-                postMessageTarget = 'http://postmessage-host.com:40000';
-
-            var cookieName = 'manualCookie';
-
-            function getCookie() {
-                return Cookies.get(cookieName);
-            }
-
-            function setCookie() {
-                Cookies.set(cookieName, new Date().toISOString());
-            }
-
-            function receiveMessage (evt) {
-                console.log('iframe received message. Evaluating origin.', evt);
-
-                if (evt.origin !== postMessageOrigin) {
-                    console.warn('Invalid origin! Not processing message from ' + postMessageOrigin + '!');
-                    return;
-                } else {
-                    console.log('Valid origin. Proceeding with message digest.');
-
-                    if (evt.data === 'sendCookie') {
-                        console.log('Message is to send cookie. Sending cookie now.');
-
-                        postMessage({cookie: getCookie()});
-                    }
-                }
-            }
-
-            function postMessage (data) {
-                //Only sending to parent of the iframe.
-                window.parent.postMessage(data, postMessageTarget);
-            }
-
-            $(function() {
-                setCookie();
-
-                //Set up postmessage.
-                window.addEventListener('message', receiveMessage, false);
-            })
-        </script>
+        <script src="iframe.js"></script>
     </head>
     <body>
     </body>
