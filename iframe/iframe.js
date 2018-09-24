@@ -2,7 +2,7 @@
     var postMessageOrigin = 'http://postmessage-host.com:40000',
         postMessageTarget = 'http://postmessage-host.com:40000';
 
-    var cookieName = 'manualCookie';
+    var cookieName = 'iframeCookie';
 
     function getCookie() {
         return Cookies.get(cookieName);
@@ -19,10 +19,10 @@
             console.warn('Invalid origin! Not processing message from ' + postMessageOrigin + '!');
             return;
         } else {
-            console.log('Valid origin. Proceeding with message digest.');
+            console.log('Verified message origin.');
 
             if (evt.data === 'sendCookie') {
-                console.log('Message is to send cookie. Sending cookie now.');
+                console.log('Sending cookie.');
 
                 postMessage({cookie: getCookie()});
             }
