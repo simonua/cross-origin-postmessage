@@ -6,7 +6,7 @@
   "scripts": {
     "start-host": "http-server ./host -a postmessage-host.com -p 40000 -o",
     "start-iframe": "http-server ./iframe -a postmessage-iframe.com -p 40001",
-    "start-authorizeservice": "node server.js",
+    "start-authorizeservice": "node auth-service\\server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
