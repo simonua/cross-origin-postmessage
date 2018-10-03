@@ -1,3 +1,5 @@
+// Whitelist entries should all be lower-cased.
+
 module.exports = [
     'http://www.bar.com',
     'http://postmessage-host.com:400000000',

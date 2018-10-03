@@ -29,7 +29,7 @@
                     if (evt.data === 'sendCookie') {
                         console.log('iframe: Sending cookie.');
 
-                        //Reploy to source/origin: https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#Example
+                        //Reply to source/origin: https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#Example
                         evt.source.postMessage({cookie: getCookie()}, evt.origin);
                     }
                 }
