@@ -21,26 +21,32 @@ app.use(function(req, res, next) {
 });
 
 app.post('/authorizesource', (req, res) => {
-    console.log('Received request to /authorizesource');
-    console.log(`   req.body:`, req.body);
-    let source = req.body.source.toLowerCase();
-    console.log(`   source: ${source}`);
+    try {
+        console.log('Received request to /authorizesource');
+        console.log(`   req.body:`, req.body);
+        let source = req.body.source.toLowerCase();
+        console.log(`   source: ${source}`);
 
-    //Check whether we have an exact match of the source url and a whitelist item.
-    let index = callerWhiteList.findIndex(whiteListItem => source === whiteListItem);
-    console.log(`   index: ${index}`);
+        //Check whether we have an exact match of the source url and a whitelist item.
+        let index = callerWhiteList.findIndex(whiteListItem => source === whiteListItem);
+        console.log(`   index: ${index}`);
 
-    //If a match was identified, we return true; otherwise, false. As the request to the service itself is successful regardless of the result,
-    //we return a 200 for either situation.
-    if (index > -1) {
-        console.log('   Source is authorized!');
-        res.send(true);
-    } else {
-        console.log('   Source is NOT authorized!');
-        res.send(false);
+        //If a match was identified, we return true; otherwise, false. As the request to the service itself is successful regardless of the result,
+        //we return a 200 for either situation.
+        if (index > -1) {
+            console.log('   Source is authorized!');
+            res.send(true);
+        } else {
+            console.log('   Source is NOT authorized!');
+            res.send(false);
+        }
+    } catch (err) {
+        console.error(err);
+        console.error('Returning HTTP 500');
+        res.status(500).send();
+    } finally {
+        console.log('------------------------------------------------------------------------');
     }
-
-    console.log('------------------------------------------------------------------------');
 });
 
 app.listen(port, () => {
