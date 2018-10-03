@@ -13,7 +13,7 @@
         //Two steps of verification: the source of the message and the request
         console.log('iframe: Received message. Evaluating origin.', evt);
 
-        //Authorize the caller with the authorization service.
+        //Authorize the caller with the (internal/shielded-from-the-public-eye) authorization service.
         return $.post('http://postmessage-iframe.com:40002/authorizesource', {source: evt.origin}).then(
             (authorized) => {
                 console.log('iframe: Response from authorization service:', authorized);
