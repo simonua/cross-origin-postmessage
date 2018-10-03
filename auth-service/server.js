@@ -37,10 +37,12 @@ app.post('/authorizesource', (req, res) => {
             console.log('   Source is authorized!');
             res.send(true);
         } else {
+            //Mismatches could/should be logged and instrumented, so that calls and trends in failing requests can be made.
             console.log('   Source is NOT authorized!');
             res.send(false);
         }
     } catch (err) {
+        //Errors could/should be logged and instrumented, so that calls and trends in failing requests can be made.
         console.error(err);
         console.error('Returning HTTP 500');
         res.status(500).send();
