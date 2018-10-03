@@ -6,12 +6,15 @@
   "scripts": {
     "start-host": "http-server ./host -a postmessage-host.com -p 40000 -o",
     "start-iframe": "http-server ./iframe -a postmessage-iframe.com -p 40001",
+    "start-authorizeservice": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
     "http-server": "^0.11.1"
   }
 }

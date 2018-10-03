@@ -22,6 +22,8 @@ Ordinarily, this would use https but I did not want to make this more difficult 
 1. Run `npm i`.
 1. Run `npm run start-iframe`.
 1. Open a second console in the same directory.
+1. Run `npm ru start-authorizeservice`.
+1. Open a third console in the same directory.
 1. Run `npm run start-host`. 
     * The browser should have opened automatically. If it did not, open browser tab with URL `http://postmessage-host.com:40000` to launch the host.
 1. Press the `Get Cookie` button. You should see a date/time appear on the screen, which is the value read out from a cookie that belongs to the iframe.
