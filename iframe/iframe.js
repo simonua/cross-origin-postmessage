@@ -1,6 +1,4 @@
 (function() {
-    var postMessageOrigin = 'http://postmessage-host.com:40000';
-
     var cookieName = 'iframeCookie';
 
     function getCookie() {
@@ -21,7 +19,7 @@
                 console.log('iframe: Response from authorization service:', authorized);
 
                 if (!authorized) {
-                    console.warn('iframe: Invalid origin! Not processing message from ' + postMessageOrigin + '!');
+                    console.warn('iframe: Invalid origin! Not processing message from ' + evt.origin + '!');
                     return;
                 } else {
                     console.log('iframe: Valid origin. Proceeding with message digest.');
@@ -34,7 +32,7 @@
                     }
                 }
             }, (error) => {
-                console.error('iframe: Error with the authorization service. Not processing message from ' + postMessageOrigin + '!');
+                console.error('iframe: Error with the authorization service. Not processing message from ' + evt.origin + '!');
                 console.error(error);
             }
         );
