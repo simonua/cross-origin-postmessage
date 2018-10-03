@@ -5,10 +5,6 @@
         return Cookies.get(cookieName);
     }
 
-    function setCookie() {
-        Cookies.set(cookieName, new Date().toISOString());
-    }
-
     function receiveMessage (evt) {
         //Two steps of verification: the source of the message and the request
         console.log('iframe: Received message. Evaluating origin.', evt);
@@ -39,7 +35,8 @@
     }
 
     $(function() {
-        setCookie();
+        //The cookie would already exist. This next line of code only exists for this POC.
+        Cookies.set(cookieName, new Date().toISOString());
 
         //Set up the (post)message listener.
         window.addEventListener('message', receiveMessage, false);
