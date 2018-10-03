@@ -1,10 +1,6 @@
 (function() {
     var cookieName = 'iframeCookie';
 
-    function getCookie() {
-        return Cookies.get(cookieName);
-    }
-
     function receiveMessage (evt) {
         //Two steps of verification: the source of the message and the request
         console.log('iframe: Received message. Evaluating origin.', evt);
@@ -24,7 +20,7 @@
                         console.log('iframe: Sending cookie.');
 
                         //Reply to source/origin: https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#Example
-                        evt.source.postMessage({cookie: getCookie()}, evt.origin);
+                        evt.source.postMessage({cookie: Cookies.get(cookieName)}, evt.origin);
                     }
                 }
             }, (error) => {
