@@ -1,8 +1,8 @@
 (function() {
     var postMessageOrigin = postMessageTarget = 'http://postmessage-iframe.com:40001';
 
-    function postMessage(data) {
-        $('#cookie-iframe')[0].contentWindow.postMessage(data, postMessageTarget);
+    function postMessage(msgType) {
+        $('#cookie-iframe')[0].contentWindow.postMessage({messageType: msgType}, postMessageTarget);
     }
 
     function receiveMessage (evt) {
@@ -14,7 +14,14 @@
             return;
         } else {
             console.log('host: Valid origin. Proceeding with message digest.');
-            $('div#log').append('<p>Cookie value: ' + evt.data.cookie + '</p>');
+
+            //Look for specific message type(s).
+            if (evt.data.messageType === 'sendCookie') {
+                console.log(`host: 'sendCookie' message. Receiving cookie now.`);
+                $('div#log').append('<p>Cookie value: ' + evt.data.cookie + '</p>');
+            } else {
+                console.warn('host: Improper message type', evt.data);
+            }
         }
     }
 

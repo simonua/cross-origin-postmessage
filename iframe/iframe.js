@@ -16,11 +16,14 @@
                 } else {
                     console.log('iframe: Valid origin. Proceeding with message digest.');
 
-                    if (evt.data === 'sendCookie') {
-                        console.log('iframe: Sending cookie.');
+                    //Look for specific message type(s).
+                    if (evt.data.messageType === 'sendCookie') {
+                        console.log(`iframe: 'sendCookie' message. Sending cookie.`);
 
                         //Reply to source/origin: https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#Example
-                        evt.source.postMessage({cookie: Cookies.get(cookieName)}, evt.origin);
+                        evt.source.postMessage({messageType: 'sendCookie', cookie: Cookies.get(cookieName)}, evt.origin);
+                    } else {
+                        console.warn('iframe: Improper message type', evt.data);
                     }
                 }
             }, (error) => {
