@@ -31,6 +31,28 @@ Ordinarily, this would use https but I did not want to make this more difficult 
     * The browser should have opened automatically. If it did not, open browser tab with URL `http://postmessage-host.com:40000` to launch the host.
 1. Press the `Get Cookie` button. You should see a date/time appear on the screen, which is the value read out from a cookie that belongs to the iframe.
 
+## Payload Format
+The payload of the message is as follows:
+
+```
+{
+    data,
+    messageType
+}
+```
+
+`messageType` is a `string` with a value of `sendCookie` in our example.
+`data` is variable (can be a `string` or an `object`, etc.) and contains the actual payload to be transmitted with the specified message type. By using the dedicated `data` property, we maintain a rigid format of data and metadata about the data in form of `messageType`.
+
+Example:
+
+```
+{
+    data: "2018-10-16T17:15:19.269Z",
+    messageType: "sendCookie"
+}
+```
+
 ## Links
 1. [MDN postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
 1. [JavaScript Cookie](https://github.com/js-cookie/js-cookie/tree/latest#readme)
